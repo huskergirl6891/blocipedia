@@ -5,4 +5,13 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   has_many :wikis
+
+  before_save { self.email = email.downcase }
+  after_initialize :init
+
+    def init
+      self.role  ||= :standard
+    end
+
+  enum role: [:standard, :admin, :premium]
 end
