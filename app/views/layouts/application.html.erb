@@ -10,7 +10,7 @@
 <body>
   <div class="container">
     <ul class="nav nav-tabs">
-      <li><%= link_to "Blocipedia", welcome_index_path %></li>
+      <li><%= link_to "Blocipedia", root_path %></li>
     </ul>
     <% if flash[:alert] %>
       <div class="alert alert-warning">
@@ -24,6 +24,11 @@
             <%= content_tag :div, msg, :id => "flash_#{name}" %>
           <% end %>
         <% end %>
+      </div>
+    <% elsif flash[:notice] %>
+      <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <%= flash[:notice] %>
       </div>
     <% end %>
 
