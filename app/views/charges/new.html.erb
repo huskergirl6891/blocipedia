@@ -8,5 +8,5 @@
 <% elsif current_user.role == 'premium' %>
   <br>
   <h4>Downgrade to standard account</h4>
-  <%= link_to "Downgrade", new_charge_path, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to downgrade?' } %>
+  <%= link_to "Downgrade", new_charge_path, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to downgrade your account? Downgrading will result in your private wikis becoming public.' } %>
 <% end %>

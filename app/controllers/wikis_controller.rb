@@ -3,7 +3,7 @@ class WikisController < ApplicationController
 
 
   def index
-    @wikis = policy_scope(Wiki)
+    @wikis = Wiki.all
   end
 
   def show
@@ -19,6 +19,7 @@ class WikisController < ApplicationController
     @wiki.title = params[:wiki][:title]
     @wiki.body = params[:wiki][:body]
     @wiki.private = params[:wiki][:private]
+    @wiki.user = current_user
 
     if @wiki.save
       flash[:notice] = "Wiki was saved."
@@ -37,6 +38,7 @@ class WikisController < ApplicationController
     @wiki = Wiki.find(params[:id])
     @wiki.title = params[:wiki][:title]
     @wiki.body = params[:wiki][:body]
+    @wiki.private = params[:wiki][:private]
 
     authorize @wiki
 
