@@ -1,2 +1,9 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+<br>
+<div class="jumbotron">
+  <h1>Blocipedia</h1>
+  <p>Welcome to the best wiki in the galaxy!</p>
+  <p>
+    <%= link_to "Sign In", new_user_registration_path, class: 'btn btn-primary' %> or
+    <%= link_to "Sign Up", new_user_session_path, class: 'btn btn-primary' %> today!
+  </p>
+</div>
