@@ -53,6 +53,12 @@ class ChargesController < ApplicationController
    # Clear out current user's Stripe customer id
    current_user.customer = nil
 
+   # Change all private wikis owned by user to public
+   Wiki.where(user_id: current_user.id).each do |wiki|
+     wiki.private = false
+     wiki.save
+   end
+
    flash[:notice] = "You have successfully changed to a standard account."
    redirect_to wikis_path
 
