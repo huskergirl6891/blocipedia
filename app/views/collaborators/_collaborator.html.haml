@@ -1,0 +1,7 @@
+= content_tag :div, class: 'media', id: "collaborator-#{collaborator.id}" do
+  .media-body
+    %small
+      = User.find(collaborator.user_id).email
+      - if current_user.admin? || current_user == @wiki.user
+        |
+        = link_to "Delete", wiki_collaborator_path(@wiki, collaborator), method: :delete

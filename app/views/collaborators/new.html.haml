@@ -1,0 +1,12 @@
+%h1
+  Add Collaborator
+
+.row
+  .col-md-8
+    = form_for [@wiki, @collaborator] do |f|
+      - if current_user.admin? || current_user.premium?
+        .form-group
+          = f.label "Users"
+          = f.select :user_id, options_from_collection_for_select(User.where.not(id: @wiki.users), :id, :email), {:class => 'form-control'}
+        .form-group
+          = f.submit "Save", class: 'btn btn-success'
