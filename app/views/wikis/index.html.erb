@@ -5,22 +5,15 @@
     <% @wikis.each do |wiki| %>
       <div class="media">
         <div class="media-body">
-          <% if wiki.private == false %>
-            <h4 class="media-heading">
-              <p><%= link_to wiki.title, wiki %></p>
-            </h4>
-          <% elsif (wiki.private == true && (wiki.user == current_user || current_user.admin?)) %>
-            <h4 class="media-heading">
-              <p>
-                <%= link_to wiki.title, wiki %> -
-                <small>
-                  <% if wiki.private == true %>
-                    Private wiki
-                  <% end %>
-                </small>
-              </p>
-            </h4>
-          <% end %>
+          <h4 class="media-heading">
+            <p><%= link_to wiki.title, wiki %>
+              <small>
+                <% if wiki.private == true %>
+                  --Private wiki
+                <% end %>
+              </small>
+            </p>
+          </h4>
         </div>
       </div>
     <% end %>
